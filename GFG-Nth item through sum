@@ -1,0 +1,43 @@
+QUESTION:
+Given two sorted arrays A and B of length L1 and L2, we can get a set of sums(add one element from the first and one from second). Find the Nth element in the set considered in sorted order.
+Note: Set of sums should have unique elements.
+
+Example 1:
+
+Input: L1 = 2, L2 = 2
+A = {1, 2}
+B = {3, 4}
+N = 3
+Output: 6
+Explaination: The set of sums are in 
+the order 4, 5, 6.
+
+
+
+SOLUTION:
+
+class Solution{
+    static int nthItem(int L1, int L2, int A[], int B[], int N)
+    {
+        
+        int k=0;
+        HashSet<Integer> set=new HashSet<>();
+        for(int i=0;i<L1;i++){
+            for(int j=0;j<L2;j++){
+                set.add(A[i]+B[j]);
+            }
+        }
+        // store values in a ArrayList 
+        ArrayList<Integer> list=new ArrayList<>(set);
+        
+        // now sort the ArrayList
+        Collections.sort(list);
+        
+        // check the onditon that N is greater than list size or not if yes then return -1 else return value;
+        if(N<=list.size()){
+        return list.get(N-1);
+        }
+        return -1;
+    
+        }
+}
