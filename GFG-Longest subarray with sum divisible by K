@@ -1,0 +1,41 @@
+QUESTION:
+Given an array containing N integers and a positive integer K, find the length of the longest sub array with sum of the elements 
+divisible by the given value K.
+
+Example 1:
+
+Input:
+A[] = {2, 7, 6, 1, 4, 5}
+K = 3
+Output: 4
+Explanation:The subarray is {7, 6, 1, 4}
+with sum 18, which is divisible by 3.
+
+SOLUTION:
+class Solution{
+    int longSubarrWthSumDivByK(int a[], int n, int k)
+    {
+        // Complete the function
+        int maxlen=0,currsum=0;
+        HashMap<Integer,Integer> hm=new HashMap<>();
+       for(int i=0;i<n;i++){
+           currsum+=a[i];
+           int rem=currsum%k;
+           if(rem<0)
+          rem=rem+k;  
+        //   for negative numbers
+        
+           if(rem==0) 
+           maxlen=Math.max(maxlen,i+1);
+           
+           if(!hm.containsKey(rem))
+           hm.put(rem,i);
+        //   store remainder and its index positon
+           else
+           maxlen=Math.max(maxlen,i-hm.get(rem));
+       }
+       return maxlen;
+    }
+}
+
+ 
