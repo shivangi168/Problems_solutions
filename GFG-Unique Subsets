@@ -1,0 +1,41 @@
+QUESTION:
+Given an array arr[] of integers of size N that might contain duplicates, the task is to find all possible unique subsets.
+
+Note: Each subset should be sorted.
+
+Example 1:
+
+Input: N = 3, arr[] = {2,1,2}
+Output:(),(1),(1 2),(1 2 2),(2),(2 2)
+Explanation: 
+All possible subsets = (),(2),(1),(1,2),(2),(2,2),(2,1),(2,1,2)
+After Sorting each subset = (),(2),(1),(1,2),(2),(2,2),(1,2),(1,2,2) 
+Unique Susbsets in Lexicographical order = (),(1),(1,2),(1,2,2),(2),(2,2)
+
+SOLUTION:
+
+class solve
+{
+    //Function to find all possible unique subsets.
+    static void subset(int st,int n,int arr[],ArrayList<Integer> al,ArrayList<ArrayList<Integer>> res){
+        res.add(new ArrayList<>(al));
+        for(int i=st;i<n;i++){
+            if(i>st && arr[i]==arr[i-1]){
+                continue;
+            }
+            al.add(arr[i]);
+            subset(i+1,n,arr,al,res);
+            al.remove(al.size()-1);
+        }
+    }
+    public static ArrayList <ArrayList <Integer>> AllSubsets(int arr[], int n)
+    {
+        // your code here
+        Arrays.sort(arr);
+        ArrayList<Integer> al=new ArrayList<>();
+        ArrayList<ArrayList<Integer>> res =new ArrayList<>();
+        subset(0,arr.length,arr,al,res);
+        res.remove(0);
+        return res;
+    }
+}
