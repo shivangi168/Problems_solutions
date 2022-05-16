@@ -1,0 +1,40 @@
+Question link: https://practice.geeksforgeeks.org/problems/finding-position2223/1/?page=3&category[]=Recursion&sortBy=submissions#
+
+Question:
+Some people(n) are standing in a queue. A selection process follows a rule where people standing on even positions are selected. Of the selected people a queue is formed and again out of these only people on even position are selected. This continues until we are left with one person. Find out the position of that person in the original queue.
+
+Example 1:
+
+Input: n = 5
+Output: 4 
+Explanation: 1,2,3,4,5 -> 2,4 -> 4.
+
+THERE ARE MULTIPLE APPROCHES TO SOLVE THIS QUESTION
+SOLUTION 1:
+
+/User function Template for Java
+class Solution {
+    static long nthPosition(long n){
+        // code here
+        
+        long ans=1;
+        while(n!=1){
+            ans=ans*2;
+            n=n/2;
+        }
+        return ans;
+    }
+}
+
+SOLTUION 2;
+
+class Solution {
+    static long nthPosition(long n){
+
+  if(n==1){
+    return 1;
+  }
+  return nthPosition(n/2)*2;
+  }
+}
+
