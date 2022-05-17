@@ -1,0 +1,36 @@
+QUESTION:
+Given an array of distinct elements which was initially sorted. This array is rotated at some unknown point.
+The task is to find the minimum element in the given sorted and rotated array. 
+
+Example 1:
+
+Input:
+N = 10
+arr[] = {2,3,4,5,6,7,8,9,10,1}
+Output: 1
+Explanation: The array is rotated 
+once anti-clockwise. So minium 
+element is at last index (n-1) 
+which is 1.
+
+SOLUTION:
+
+class Solution
+{
+    //Function to find the minimum element in sorted and rotated array.
+    static int minNumber(int arr[], int low, int high)
+    {
+        // Your code here
+        int m=arr[0];
+        while(low<high){
+            int mid=(low+high)/2;
+            if(arr[mid]>=m){
+                low=low+1;
+            }
+            else{
+                high=mid;
+            }
+        }
+        return Math.min(m,arr[low]);
+    }
+}
