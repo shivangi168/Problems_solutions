@@ -1,0 +1,57 @@
+QUESTION:
+1. You are given a number n representing number of stairs in a staircase.
+2. You are standing at the bottom of staircase. You are allowed to climb 1 step, 2 steps or 3 steps in one move.
+3. Complete the body of getStairPaths function - without changing signature - to get the list of all paths that can be used to climb the staircase up.
+Use sample input and output to take idea about output.
+
+Constraints:
+0 <= n <= 10
+
+Sample Input:
+3
+
+Sample Output:
+[111, 12, 21, 3]
+
+SOLUTION:
+import java.util.*;
+public class getstairpath {
+    public static void main(String[] args) {
+        try (Scanner scn = new Scanner(System.in)) {
+            int n=scn.nextInt();
+            ArrayList<String> res=new ArrayList<>();
+            res=getstairpaths( n);
+            System.out.println(res);
+            
+        }
+
+    }
+    public static ArrayList<String> getstairpaths(int n){
+        if(n==0){
+            ArrayList<String> temp=new ArrayList<>();
+            temp.add("");
+            return temp;
+        }
+        else if(n<0){
+            ArrayList<String> temp=new ArrayList<>();
+            return temp;
+        }
+        ArrayList<String> path1=getstairpaths(n-1);
+        ArrayList<String> path2=getstairpaths(n-2);
+        ArrayList<String> path3=getstairpaths(n-3);
+        ArrayList<String> paths=new ArrayList<>();
+
+        for(String val:path1){
+            paths.add("1"+val);
+        }
+        for(String val:path2){
+            paths.add("2"+val);
+        }
+        for(String val:path3){
+            paths.add("3"+val);
+        }
+        return paths;
+    }
+
+}
+
