@@ -1,0 +1,46 @@
+#.QUESTION- 
+Given an integer array nums, return the most frequent even element.
+
+If there is a tie, return the smallest one. If there is no such element, return -1.
+
+ 
+
+Example 1:
+
+Input: nums = [0,1,2,2,4,4,1]
+Output: 2
+Explanation:
+The even elements are 0, 2, and 4. Of these, 2 and 4 appear the most.
+We return the smallest one, which is 2.
+
+#.SOLUTION-
+
+class Solution {
+    public int mostFrequentEven(int[] nums) {
+        int ans=Integer.MAX_VALUE;
+        int max=Integer.MIN_VALUE;
+        Map<Integer,Integer> map=new TreeMap();
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]%2==0){
+                if(map.containsKey(nums[i])){
+                    map.put(nums[i],map.get(nums[i])+1);
+                }
+                else{
+                map.put(nums[i],1);
+                }
+            }    
+        }
+        for(int x:map.keySet()){
+            if(max<map.get(x)){
+                max=map.get(x);
+                 ans=x;
+
+            }
+        }
+        if(ans==Integer.MAX_VALUE)
+        return -1;
+        return ans;
+
+        
+    }
+}
