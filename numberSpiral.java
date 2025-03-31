@@ -5,14 +5,14 @@ public class numberSpiral {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
-        int t = Integer.parseInt(br.readLine());  // Number of test cases
+        int t = Integer.parseInt(br.readLine()); 
 
         while (t-- > 0) {
             StringTokenizer st = new StringTokenizer(br.readLine());
             long y = Long.parseLong(st.nextToken());
             long x = Long.parseLong(st.nextToken());
 
-            long maxVal = Math.max(y, x);  // Maximum of row and column
+            long maxVal = Math.max(y, x);  
             long diagonalValue = (maxVal - 1) * (maxVal - 1);
 
             long result;
