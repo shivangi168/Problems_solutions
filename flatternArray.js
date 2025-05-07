@@ -3,7 +3,7 @@ function flattenArray(arr) {
   
     arr.forEach(item => {
       if (Array.isArray(item)) {
-        result = result.concat(flattenArray(item)); 
+        result = result.concat(flattenArray(item));  
       } else {
         result.push(item);
       }
