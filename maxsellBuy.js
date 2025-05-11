@@ -1,12 +1,21 @@
-function BestTimeTosell(arr){
+// maximum sub aaray
+
+function maxSubarr(arr){
     const n = arr.length;
-    let res =0;
-    for(let i=0;i<n-1;i++){
-        for(j=i+1;j<n;j++){
-            res = Math.max(res, arr[j]-arr[i]);
+    let max = arr[0];
+    let sum = arr[0];
+    
+    for(let i=1;i<n;i++){
+        sum += arr[i];
+        if( sum > max){
+            max = sum;
         }
+        if(sum <=0 ){
+            sum =0;
+        }
+        
     }
-    return res;
+    return max;
 }
-const nums = [7, 10, 1, 3, 6, 9, 2];
-console.log(BestTimeTosell(nums));
+const nums = [2, 3, -8, 7, -1, 2, 3];
+console.log(maxSubarr(nums))
