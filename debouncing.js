@@ -7,10 +7,8 @@ function debounce(fn, delay) {
             fn.apply(context,args)
         },delay)
     }
-    clearTimeout(timer);
 
 
-    // Your implementation
 }
 
 

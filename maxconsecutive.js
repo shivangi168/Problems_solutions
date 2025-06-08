@@ -16,4 +16,4 @@ function maxConsecutive(nums) {
   return maxCount;
 }
 
-// Output: 3
+
