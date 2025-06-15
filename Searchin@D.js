@@ -19,3 +19,31 @@ function searchin2D(matrix,target){
 }
 return isFound;
 }
+
+// Optimised
+function searchin2D(matrix,target){
+    let isFound = false;
+    const n = matrix.length;
+    // const m = matrix[0].length;
+    let i = 0;
+    let j = matrix[0].length;
+    
+    while(i < n &&  j >= 0){
+        if(matrix[i][j] == target){
+            isFound = true;
+            return isFound;
+        }
+        if(matrix[i][j] < target ){
+            i++;
+            
+        }
+        else{
+            j--
+            
+        }
+    }
+    return isFound;
+    
+   
+
+}
