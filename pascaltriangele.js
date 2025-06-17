@@ -22,3 +22,4 @@ function generatePascalsTriangle(n) {
 }
 const result = generatePascalsTriangle(5);
 console.log(result);
+m
