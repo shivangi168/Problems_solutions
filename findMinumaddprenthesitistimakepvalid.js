@@ -1,21 +1,18 @@
-const str = "(((";
-const str2 = "())";
-console.log(findMinimum(str2));
-console.log(findMinimum(str));
+function minAddToMakeValid(s) {
+    let balance = 0;
+    let insertions = 0;
 
-function findMinimum(str){
-    let count = 0;
-    const res = [];
-   let openingFre = 0;
-    let closingfreq = 0;
-    for(let ch of str){
-        if(ch == '('){
-            openingFre++;
-        }
-        else{
-            closingfreq++;
+    for (let char of s) {
+        if (char === '(') {
+            balance++;
+        } else {
+            if (balance > 0) {
+                balance--;
+            } else {
+                insertions++;
+            }
         }
     }
-    return Math.abs(openingFre-closingfreq);
-    
+
+    return insertions + balance;
 }
