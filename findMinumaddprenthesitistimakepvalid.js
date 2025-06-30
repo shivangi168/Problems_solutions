@@ -16,6 +16,6 @@ function findMinimum(str){
             closingfreq++;
         }
     }
-    return Math.abs(openingFre);
+    return Math.abs(openingFre-closingfreq);
     
 }
