@@ -1,12 +1,28 @@
-function isAnagram(s, t) {
-    if (s.length !== t.length) return false;
+function areAnagrams(str1, str2) {
+  // Just convert to lowercase, don’t remove spaces
+  const normalize = str => str.toLowerCase();
 
-    let sortedS = s.split('').sort().join('');
-    let sortedT = t.split('').sort().join('');
+  const s1 = normalize(str1);
+  const s2 = normalize(str2);
 
-    return sortedS === sortedT;
+  if (s1.length !== s2.length) return false;
+
+  const charCount = {};
+
+  for (let char of s1) {
+    charCount[char] = (charCount[char] || 0) + 1;
+  }
+
+  for (let char of s2) {
+    if (!charCount[char]) {
+      return false;
+    }
+    charCount[char]--;
+  }
+
+  return true;
 }
-console.log(isAnagram("listen", "silent"));   // true ✅
-console.log(isAnagram("hello", "world"));     // false ❌
-console.log(isAnagram("anagram", "nagaram")); // true ✅
-console.log(isAnagram("aacc", "ccac"));       // false ❌
+
+// Example
+console.log(areAnagrams("listen", "silent"));
+console.log(areAnagrams("li sten", "sil en t"));
